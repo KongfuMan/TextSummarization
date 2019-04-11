@@ -41,7 +41,7 @@ def threaded(clientSocket):
     while True:
         # data received from client
 
-        request = clientSocket.recv(1024)
+        request = clientSocket.recv(4096)
 
         print("Thread "+threading.currentThread().getName() + "receives msg ")
         print('REQUEST',request)
@@ -68,13 +68,13 @@ def threaded(clientSocket):
             oriText = entry.split('&')[1]
             oriText = oriText.split('=')[1]
 
-            # try:
-            #     oriTextList = oriText.split('+')
-            #     oriText = " ".join(oriTextList)
-            #     oriText = oriText.replace('%27',"'")
-            #     oriText = oriText.replace('%2C', ",")
-            # except:
-            #     print('no need for rematching')
+            try:
+                oriTextList = oriText.split('+')
+                oriText = " ".join(oriTextList)
+                oriText = oriText.replace('%27',"'")
+                oriText = oriText.replace('%2C', ",")
+            except:
+                print('no need for rematching')
 
 
 
@@ -96,11 +96,11 @@ def threaded(clientSocket):
             print('OUT:',outputSent)
 
             jsScript1 = "<script>document.getElementById('oriText').innerHTML=\"<textarea maxlength=\\\"50000\\\" name=\\\"oriText\\\" size=\\\"5000\\\" style=\\\"width:600px;height:250px\\\">" + oriText + "</textarea>\";</script>"
-            #jsScript2 = "<script>document.getElementById('sentnum').innerHTML=\"<input id=\\\"sentnum\\\" maxlength=\\\"100\\\" name=\\\"sentnum\\\"  size=\\\"50\\\" style=\\\"width:100px;height:20px\\\" type=\\\"text\\\" value=\\\"" + sentnum + "\\\">\";</script>"
+            jsScript2 = "<script>document.getElementById('sentnum').innerHTML=\"<input id=\\\"sentnum\\\" maxlength=\\\"100\\\" name=\\\"sentnum\\\"  size=\\\"50\\\" style=\\\"width:100px;height:20px\\\" type=\\\"text\\\" value=\\\"" + sentnum + "\\\">\";</script>"
 
             jsScript3 = "<script>document.getElementById('output').innerHTML=\"<textarea maxlength=\\\"50000\\\" size=\\\"5000\\\" style=\\\"width:600px;height:250px\\\" disabled>" + outputSent + "</textarea>\";</script>"
 
-            content = after_content1 + jsScript1 + '\n'  +'\n' + jsScript3 + after_content2
+            content = after_content1 + jsScript1 + '\n' +jsScript2 +'\n' + jsScript3 + after_content2
 
             content += '<p>Summarize successs!</p>'
 
@@ -147,7 +147,7 @@ def Main():
     # reverse a port on your computer
     # in our case it is 12345 but it
     # can be anything
-    port = 1111
+    port = 22222
     serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serverSocket.setblocking(True)
     serverSocket.bind((host, port))
