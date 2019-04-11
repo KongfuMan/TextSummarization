@@ -1,0 +1,76 @@
+<!--<script>-->
+    <!--document.getElementById('oriText').innerHTML="<textarea id=\"oriText\" maxlength=\"50000\" name=\"oriText\" size=\"5000\" style=\"width:600px;height:250px\"></textarea>";-->
+<!--</script>-->
+<!-- extend base layout -->
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="en">
+    <head>
+
+        <title>Text Summarizer - TextSummarization | Text Summarization Online | Text Summarization Demo | Text Summarization API</title>
+
+
+    </head>
+    <body>
+
+
+
+
+
+<form action="" method="post" name="analyse" accept-charset="UTF-8">
+
+    <h2>Text Summarizer</h2>
+    <table>
+        <tr>
+            <td>
+            <p>Paste your text into the box:</p>
+            <textarea id="oriText" maxlength="50000" name="oriText" size="5000" style="width:600px;height:250px"></textarea>
+                <!--<p id="oriText"></p>-->
+            </td>
+            <td>
+                <p>After Summarizing</p>
+
+                <!--{% if output %}-->
+                <!--<textarea maxlength="50000" size="5000" style="width:600px;height:250px" disabled>{{output}}</textarea>-->
+
+                <!--{% else %}-->
+                <textarea maxlength="50000" size="5000" style="width:600px;height:250px" disabled></textarea>
+                <!--{% end %}-->
+
+            </td>
+            <p></p>
+            <p>Type the summarized sentence number you need:</p>
+            <!--{% if num %}-->
+            <!--<input id="sentnum" maxlength="100" name="sentnum" placeholder={{num}} size="50" style="width:100px;height:20px" type="text" value="">-->
+            <!--{% else %}-->
+            <input id="sentnum0" maxlength="100" name="sentnum" placeholder="Number Need" size="50" style="width:100px;height:20px" type="text" value="">
+            <!--{% end %}-->
+            <p></p>
+        </tr>
+        <tr>
+            <td><input class = "btn btn-primary btn-large" type="submit" value="Summarize Now"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+          </div>
+                </div>
+            </div>
+
+
+    </body>
+</html>
